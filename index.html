@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Choose your seats for an unforgettable night at The Grand Hall.">
+  <title>The Grand Hall | Ticket Booking</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="The Grand Hall home">
+      <span class="brand-mark">G</span>
+      <span><strong>THE GRAND HALL</strong><small>ARTS & PERFORMANCE</small></span>
+    </a>
+    <nav class="top-nav" aria-label="Main navigation">
+      <a href="#venue">Venue</a>
+      <a href="#experience">About</a>
+      <a href="#booking">Tickets</a>
+    </nav>
+    <a class="help-link" href="mailto:hello@thegrandhall.example">Need help?</a>
+  </header>
+
+  <main>
+    <section class="hero" id="experience">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> LIVE PERFORMANCE · SEASON 2026</p>
+        <h1>An evening<br><em>to remember.</em></h1>
+        <p class="hero-description">Choose your perfect seat for a night of music, stories and unforgettable moments.</p>
+        <div class="event-meta">
+          <div class="meta-item"><span class="meta-icon">◷</span><span><b>Saturday, 28 November</b><small>Doors open at 18:30</small></span></div>
+          <div class="meta-item"><span class="meta-icon">⌖</span><span><b>The Grand Hall</b><small>Baku, Azerbaijan</small></span></div>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="Abstract theatre stage illustration">
+        <div class="art-glow"></div>
+        <div class="curtain curtain-left"></div><div class="curtain curtain-right"></div>
+        <div class="stage-light light-one"></div><div class="stage-light light-two"></div>
+        <div class="stage-platform"></div>
+        <div class="art-caption"><span>01 / 01</span><span>THE GRAND HALL EXPERIENCE</span></div>
+      </div>
+    </section>
+
+    <section class="booking-section" id="booking">
+      <div class="section-heading">
+        <div><p class="eyebrow">YOUR NIGHT, YOUR SEAT</p><h2>Choose your seats</h2></div>
+        <p class="section-note">Select a seat to inspect its details.<br>It will only be added when you choose <b>Add to cart.</b></p>
+      </div>
+
+      <div class="booking-layout">
+        <section class="venue-panel panel" id="venue" aria-label="Interactive venue seating map">
+          <div class="panel-heading">
+            <div><h3>Seating map</h3><p>THE GRAND HALL · MAIN AUDITORIUM</p></div>
+            <span class="live-indicator"><i></i> SELECT YOUR PLACE</span>
+          </div>
+
+          <div class="legend" aria-label="Seat legend">
+            <span><i class="legend-seat available"></i> Available</span>
+            <span><i class="legend-seat selected"></i> Inspected</span>
+            <span><i class="legend-seat in-cart"></i> In cart</span>
+            <span><i class="legend-seat unavailable"></i> Unavailable</span>
+          </div>
+
+          <div class="map-toolbar">
+            <span class="map-hint">Click a seat to view price and details</span>
+            <div class="zoom-controls" aria-label="Map navigation controls">
+              <button type="button" id="zoomOut" aria-label="Zoom out" title="Zoom out">−</button>
+              <button type="button" id="zoomIn" aria-label="Zoom in" title="Zoom in">+</button>
+              <span class="toolbar-divider"></span>
+              <button type="button" id="moveUp" aria-label="Move up" title="Move up">↑</button>
+              <button type="button" id="moveDown" aria-label="Move down" title="Move down">↓</button>
+              <button type="button" id="moveLeft" aria-label="Move left" title="Move left">←</button>
+              <button type="button" id="moveRight" aria-label="Move right" title="Move right">→</button>
+              <button type="button" id="resetView" class="reset-button" title="Reset / center view">Reset</button>
+            </div>
+          </div>
+
+          <div class="map-viewport" id="mapViewport">
+            <div class="map-content" id="mapContent">
+              <div class="stage-area"><div class="stage-label">S T A G E</div><div class="stage-subtitle">THE PERFORMANCE STARTS HERE</div></div>
+              <div class="stage-edge"></div>
+              <div class="section-labels">
+                <span class="section-label label-premium">PREMIUM · $85</span>
+                <span class="section-label label-standard">STANDARD · $60</span>
+                <span class="section-label label-economy">BALCONY · $40</span>
+              </div>
+              <div id="seatingMap" class="seating-map"></div>
+              <div class="aisle-note"><span></span> CENTRAL AISLE <span></span></div>
+              <div class="venue-footer"><span>← LEFT WING</span><span>MAIN FLOOR</span><span>RIGHT WING →</span></div>
+            </div>
+          </div>
+          <div class="map-footnote"><span>ⓘ</span> Some seats are reserved and cannot be selected.</div>
+        </section>
+
+        <aside class="side-column">
+          <section class="panel seat-details" aria-live="polite">
+            <div class="panel-heading compact"><div><h3>Seat details</h3><p>YOUR CURRENT SELECTION</p></div><span class="detail-number" id="detailNumber">—</span></div>
+            <div class="empty-selection" id="emptySelection">
+              <div class="seat-illustration">⌑</div>
+              <b>No seat selected yet</b>
+              <p>Choose any available seat on the map to see its section, row and price.</p>
+            </div>
+            <div class="selected-details hidden" id="selectedDetails">
+              <div class="selected-seat-name" id="selectedSeatName">Seat A1</div>
+              <div class="detail-grid">
+                <div><small>SECTION</small><b id="detailSection">Premium</b></div>
+                <div><small>ROW</small><b id="detailRow">A</b></div>
+                <div><small>SEAT</small><b id="detailSeat">1</b></div>
+                <div><small>STATUS</small><b id="detailStatus">Available</b></div>
+              </div>
+              <div class="price-line"><span>Ticket price</span><strong id="detailPrice">$85.00</strong></div>
+              <button class="primary-button" id="addToCart" type="button">ADD TO CART <span>↗</span></button>
+              <p class="button-note" id="detailMessage">Your seat is not reserved until it is added to your cart.</p>
+            </div>
+          </section>
+
+          <section class="panel cart-panel">
+            <div class="panel-heading compact"><div><h3>Your cart</h3><p><span id="cartCount">0</span> TICKETS SELECTED</p></div><span class="cart-icon">▱</span></div>
+            <div id="cartItems" class="cart-items">
+              <div class="empty-cart"><span>＋</span><p>Your cart is empty.</p><small>Your selected tickets will appear here.</small></div>
+            </div>
+            <div class="cart-total"><span>Total</span><strong id="cartTotal">$0.00</strong></div>
+            <button type="button" class="checkout-button" id="checkoutButton" disabled>CONTINUE <span>→</span></button>
+            <p class="checkout-note">Demo project · No real payment will be taken.</p>
+          </section>
+        </aside>
+      </div>
+    </section>
+
+    <section class="experience-strip">
+      <div><span class="strip-icon">✦</span><b>A memorable setting</b><small>Designed for every performance</small></div>
+      <div><span class="strip-icon">◈</span><b>Choose your view</b><small>Explore the hall before booking</small></div>
+      <div><span class="strip-icon">♡</span><b>Simple booking</b><small>Your seats stay in your cart</small></div>
+    </section>
+  </main>
+
+  <footer class="footer"><a class="brand footer-brand" href="#"><span class="brand-mark">G</span><span><strong>THE GRAND HALL</strong><small>ARTS & PERFORMANCE</small></span></a><span>© 2026 The Grand Hall. Student project demo.</span><a href="#experience">Back to top ↑</a></footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="modal-backdrop hidden" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <button class="modal-close" id="closeModal" aria-label="Close dialog">×</button>
+      <div class="modal-check">✓</div><p class="eyebrow">DEMO CHECKOUT</p><h2 id="modalTitle">Your seats are ready.</h2>
+      <p id="modalSummary">You have selected 0 tickets.</p>
+      <p class="modal-disclaimer">This is a front-end student project. No payment or actual reservation is made.</p>
+      <button class="primary-button" id="finishDemo" type="button">GOT IT</button>
+    </div>
+  </div>
+</body>
+</html>
