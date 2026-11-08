@@ -532,6 +532,7 @@
   viewport.addEventListener("pointercancel", stopDragging);
 
   // Demo checkout. No real payment is processed.
+  $("addToCart").addEventListener("click", addToCart);
   $("checkoutButton").addEventListener("click", () => {
     if (!cart.length) return;
 
